@@ -302,6 +302,12 @@ function registerComponent (vxetable: typeof VXETable) {
       ])
     },
     methods: {
+      reloadColumn: function reloadColumn (columns: ColumnOptions[]) {
+        try {
+          this.clearAll()
+        } catch (error) {}
+        return this.loadColumn(columns)
+      },
       loadColumn (columns: ColumnOptions[]) {
         return this.$nextTick().then(() => {
           const { $vxe, $scopedSlots, renderTreeIcon, treeOpts } = this
